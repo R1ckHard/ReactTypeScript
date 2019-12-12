@@ -1,4 +1,11 @@
-import React from 'react'
+import React from 'react';
+import {makeStyles} from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 interface IUser {
     login: string,
@@ -8,8 +15,7 @@ interface IUser {
     surname?: string
 }
 
-
-const  usersArr: IUser[] = [
+const usersArr: IUser[] = [
     {
         "_id": "5ddd1e8fc2fe5c341ce668d3",
         "login": "Sighfried",
@@ -44,17 +50,17 @@ const  usersArr: IUser[] = [
     }
 ];
 
-export class UserTable extends React.Component<any,any> {
+export class UserTable extends React.Component<any, any> {
 
-    constructor(props:any) {
+    constructor(props: any) {
         super(props);
         this.state = {
-            isUserVisable:false,
+            isUserVisable: false,
             userData: [],
         }
     }
 
-    handleClick=(e: any)=> {
+    handleClick = (e: any) => {
         e.preventDefault();
         usersArr.forEach((item: IUser) => {
             if (item.login === e.target.parentNode.id) {
@@ -70,11 +76,12 @@ export class UserTable extends React.Component<any,any> {
 
     array = usersArr.map((item: IUser, index: number) => {
         return (
-            <tr onClick={this.handleClick} key={index} id={item.login}>
-                <td>{item.login}</td>
-                <td>{item._id}</td>
-                <td>{item.password}</td>
-            </tr>
+            <TableRow onClick={this.handleClick} key={index} id={item.login}>
+                <TableCell align="right">{item.login}</TableCell>
+                <TableCell align="right">{item._id}</TableCell>
+                <TableCell align="right">{item.password}</TableCell>
+
+            </TableRow>
         )
 
     })
@@ -82,25 +89,28 @@ export class UserTable extends React.Component<any,any> {
     render() {
         return (
             <div className="container">
-                <table className="centered mg1 container">
-                    <thead>
-                    <tr>
-                        <th>Login</th>
-                        <th>ID</th>
-                        <th>Password</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.array}
+                <Paper className="container">
+                    <Table aria-label="caption table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="center">Login</TableCell>
+                                <TableCell align="center">ID</TableCell>
+                                <TableCell align="center">Password</TableCell>
 
-                    </tbody>
-                </table>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {this.array}
+                        </TableBody>
+                    </Table>
+                </Paper>
+
                 {this.state.isUserVisable &&
-                <h1>Hello! {this.state.userData.login}.</h1>}
+                <h1>Hello! {this.state.userData.login}.</h1>
+                }
             </div>
 
         )
     }
-
 }
 

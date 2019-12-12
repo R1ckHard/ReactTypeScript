@@ -1,0 +1,14 @@
+.signInForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .text-field {
+    width: 50%;
+    margin: 20px;
+    align-self: center;
+  }
+  .submitButton{
+    align-self: center;
+  }
+}

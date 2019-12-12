@@ -16,8 +16,12 @@ code {
   padding-right: 1rem;
 }
 .container{
-  width: 70%;
-  position: center;
+  display: flex;
+  width: 80%;
+  padding: 20px;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
 }
 h1{
   position: center;
