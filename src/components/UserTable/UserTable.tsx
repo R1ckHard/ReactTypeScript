@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -60,26 +60,19 @@ export class UserTable extends React.Component<any, any> {
         }
     }
 
-    handleClick = (e: any) => {
-        e.preventDefault();
-        usersArr.forEach((item: IUser) => {
-            if (item.login === e.target.parentNode.id) {
-                this.setState({
-                    isUserVisable: true,
-                    userData: item
-                })
-            }
+    handleClick = (user: IUser) => (): void => {
+        this.setState({
+            isUserVisable: true,
+            userData: user
         })
-
-        console.log(e.target.parentNode.id);
     }
 
-    array = usersArr.map((item: IUser, index: number) => {
+    array = usersArr.map((user: IUser, index: number) => {
         return (
-            <TableRow onClick={this.handleClick} key={index} id={item.login}>
-                <TableCell align="right">{item.login}</TableCell>
-                <TableCell align="right">{item._id}</TableCell>
-                <TableCell align="right">{item.password}</TableCell>
+            <TableRow onClick={this.handleClick(user)} key={index} id={user.login}>
+                <TableCell align="right">{user.login}</TableCell>
+                <TableCell align="right">{user._id}</TableCell>
+                <TableCell align="right">{user.password}</TableCell>
 
             </TableRow>
         )

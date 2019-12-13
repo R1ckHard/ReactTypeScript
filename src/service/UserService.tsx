@@ -1,38 +1,42 @@
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
+import axios from "axios";
 
 const accessToken: any = localStorage.getItem("accessToken");
-
 const userService = {
 
-    getUserProfile: async (userData: any) => {
-        let userProfile = await fetch(`http://localhost:8000/users/${"verifyToken"}`, {
-            headers: {
-                Authorization: accessToken
-            },
-            method: "POST",
-            body: JSON.stringify({
-                title: "Title of post",
-                body: userData
-            })
+    // getUserProfile: async (userData: any) => {
+    //     let userProfile = await axios
+    //         .post(`http://localhost:8000/users/${decodedToken}`, {
+    //             headers: {
+    //                 Authorization: accessToken
+    //             }    //             })
+    //
+    //         })
+    //
+    // },
 
-        })
-
-    },
-    signIn: async (login:any,password:any) => {
-        let userAuth = await fetch("http://localhost:8000/login", {
-            headers: {
-                "Content-Type": "application/json"
-            },
-            method: "POST",
-            body: JSON.stringify({
-                login:login,
-                password:password
-            })
-
-        })
-        console.log(userAuth);
-        console.log(login,password);
-        return userAuth;
+    // getUser: async (token) => {
+    //     let userAuth = await axios
+    //         .get("http://localhost:8000/login",
+    //             {
+    //                 headers: {
+    //                     "Content-Type": "application/json"
+    //                 }
+    //             })
+    //     return userAuth.data;
+    // },
+    signIn: async (login: string, password: string) => {
+        let userAuth = await axios
+            .post("http://localhost:8000/login", {
+                    login: login,
+                    password: password
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+        return userAuth.data;
     },
 }
 export default userService

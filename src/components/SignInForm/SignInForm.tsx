@@ -1,9 +1,9 @@
-import React from "react";
+import React, {FormEvent} from "react";
 import {TextField, Button} from "@material-ui/core/";
 import "./SIgnInForm.scss";
 import userService from "../../service/UserService";
 
-export class SignInForm extends React.Component<any, any> {
+export class SignInForm extends React.Component<{}, any> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -15,10 +15,12 @@ export class SignInForm extends React.Component<any, any> {
         }
     }
 
-    handleSubmit = async (event: any) => {
+    handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            let accessToken = await userService.signIn(this.state.userData.login, this.state.userData.password);
+            let user = await userService.signIn(this.state.userData.login, this.state.userData.password);
+            console.log(user);
+            let accessToken = user.token;
             if (accessToken) {
                 localStorage.setItem("accessToken", JSON.stringify(accessToken));
             }
@@ -35,7 +37,6 @@ export class SignInForm extends React.Component<any, any> {
                 login: event.target.value
             }
         })
-        console.log(this.state.userData.login);
     }
     passwordHandler = async(event: any) => {
         await this.setState({
@@ -44,7 +45,6 @@ export class SignInForm extends React.Component<any, any> {
                 password: event.target.value
             }
         })
-        console.log(this.state.userData.password);
 
     }
 

@@ -9,7 +9,7 @@ export const Navbar: React.FunctionComponent = () => {
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6">
-                        <Button href="/login" className="navbar-logo" color="inherit">Login</Button>
+                        <Button href="/" className="navbar-logo" color="inherit">LOGO</Button>
 
                     </Typography>
                 </Toolbar>
