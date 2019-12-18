@@ -1,15 +1,17 @@
 import React, {FormEvent} from "react";
 import {TextField, Button, Typography} from "@material-ui/core/";
-import "./SIgnInForm.scss";
+import "./SIgnUnForm.scss";
 import userService from "../../service/UserService";
 
-export class SignInForm extends React.Component<any, any> {
+export class SignUpForm extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
             userData: {
                 login: null,
-                password: null
+                password: null,
+                name:null,
+                surname:null,
             }
 
         }
@@ -19,11 +21,11 @@ export class SignInForm extends React.Component<any, any> {
         event.preventDefault();
         try {
             let accessToken = await userService.signIn(this.state.userData.login, this.state.userData.password);
-
-            if (accessToken) {
-                localStorage.setItem("accessToken", accessToken);
-                this.props.history.push('/myPage');
-            }
+            console.log(accessToken);
+            // if (accessToken) {
+            //     localStorage.setItem("accessToken", accessToken);
+            // }
+            // this.props.history.push('/myPage');
 
         } catch (e) {
             if (e.status === 401) {
@@ -39,7 +41,7 @@ export class SignInForm extends React.Component<any, any> {
                 login: event.target.value
             }
         })
-    }
+    };
     passwordHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
         await this.setState({
             userData: {
@@ -47,15 +49,31 @@ export class SignInForm extends React.Component<any, any> {
                 password: event.target.value
             }
         })
+    };
+    nameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        await this.setState({
+            userData: {
+                ...this.state.userData,
+                name: event.target.value
+            }
+        })
+    };
+    surnameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        await this.setState({
+            userData: {
+                ...this.state.userData,
+                surname: event.target.value
+            }
+        })
+    };
 
-    }
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="signInForm">
                     <Typography variant="h4" gutterBottom>
-                        Sigh In Please
+                        Sigh Up Please
                     </Typography>
                     <TextField
                         onChange={this.loginHandler}
@@ -68,6 +86,23 @@ export class SignInForm extends React.Component<any, any> {
                     <TextField
                         name="password"
                         onChange={this.passwordHandler}
+                        className="text-field"
+                        id="outlined-password-input"
+                        type="password"
+                        autoComplete="current-password"
+                        variant="outlined"
+                        placeholder="Password"
+
+                    />
+                    <TextField
+                        onChange={this.nameHandler}
+                        className="text-field"
+                        id="outlined"
+                        variant="outlined"
+                        placeholder="Login"
+                    />
+                    <TextField
+                        onChange={this.surnameHandler}
                         className="text-field"
                         id="outlined-password-input"
                         type="password"

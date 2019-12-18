@@ -1,8 +1,8 @@
 import React from "react";
 import {SignInForm} from "../components/SignInForm/SignInForm";
 
-export const Authorization:React.FunctionComponent = () =>{
+export const Authorization:React.FunctionComponent = (props:any) =>{
     return(
-        <SignInForm/>
+        <SignInForm history={props.history}/>
     )
 }

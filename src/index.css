@@ -22,7 +22,10 @@ code {
   flex-direction: column;
   margin: auto;
   justify-content: center;
+  align-content: center;
 }
 h1{
   position: center;
+}
+.loader{
 }

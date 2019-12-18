@@ -4,16 +4,17 @@ import axios from "axios";
 const accessToken: any = localStorage.getItem("accessToken");
 const userService = {
 
-    // getUserProfile: async (userData: any) => {
-    //     let userProfile = await axios
-    //         .post(`http://localhost:8000/users/${decodedToken}`, {
-    //             headers: {
-    //                 Authorization: accessToken
-    //             }    //             })
-    //
-    //         })
-    //
-    // },
+    getMyPage: async () => {
+        let userProfile = await axios
+            .get("http://localhost:8000/myPage", {
+                headers: {
+                    Authorization: accessToken
+                }
+            })
+        console.log(userProfile)
+        return userProfile.data;
+
+    },
 
     // getUser: async (token) => {
     //     let userAuth = await axios
@@ -36,6 +37,7 @@ const userService = {
                         "Content-Type": "application/json"
                     }
                 })
+
         return userAuth.data;
     },
 }

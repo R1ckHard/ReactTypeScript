@@ -1,12 +1,10 @@
-.signInForm {
+.userDataForm {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  box-shadow: gray 0 0 10px 0;
-  border-radius: 3%;
-  width: 700px;
   align-self: center;
-  height: 400px;
+  justify-content: space-around;
+  box-shadow: gray 0 0 10px 0;
+  width: 700px;
 
   .text-field {
     width: 80%;
@@ -24,3 +22,4 @@
 
   }
 }
+
