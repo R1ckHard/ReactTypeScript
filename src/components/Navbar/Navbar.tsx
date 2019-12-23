@@ -1,7 +1,6 @@
 import React from "react"
 import './Navbar.scss';
 import {MenuItem, Menu, Avatar, Button, Typography, Toolbar, AppBar} from '@material-ui/core/';
-import Fade from '@material-ui/core/Fade';
 
 
 export class Navbar extends React.Component<any, any> {
@@ -25,10 +24,6 @@ export class Navbar extends React.Component<any, any> {
             menuIsVisible: true
         })
     };
-    logout = async () => {
-        localStorage.removeItem("accessToken")
-        this.props.history.push("/settings")
-    }
 
     openMenu = (event: any) => {
         switch (event.target.innerHTML) {
@@ -56,22 +51,24 @@ export class Navbar extends React.Component<any, any> {
                                                 color="inherit">LOGO</Button>
                                     </Typography>
                                 </Toolbar>
-                                <Avatar className="avatar">
-                                    <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
-                                        R
-                                    </Button>
-                                    <Menu
-                                        id="simple-menu"
-                                        keepMounted
-                                        anchorEl={this.state.anchorEl}
-                                        open={this.state.menuIsVisible}
-                                        onClose={this.handleClose}
-                                        onClick={this.openMenu}
-                                    >
-                                        <MenuItem><span>Settings</span></MenuItem>
-                                        <MenuItem><span>Logout</span></MenuItem>
-                                    </Menu>
-                                </Avatar>
+                                    <Avatar className="avatar">
+                                        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
+                                            R
+                                        </Button>
+                                        <Menu
+                                            className='menu'
+                                            id="simple-menu"
+                                            keepMounted
+                                            anchorEl={this.state.anchorEl}
+                                            open={this.state.menuIsVisible}
+                                            onClose={this.handleClose}
+                                            onClick={this.openMenu}
+                                        >
+                                            <MenuItem><span>Settings</span></MenuItem>
+                                            <MenuItem><span>Logout</span></MenuItem>
+                                        </Menu>
+                                    </Avatar>
+
                             </AppBar>
 
 

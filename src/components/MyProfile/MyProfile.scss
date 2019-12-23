@@ -12,11 +12,22 @@
     align-self: center;
   }
 
-  .submitButton {
+  span{
     align-self: center;
-    margin-bottom: 20px;
+    flex-direction: row;
+
+    .submitButton {
+      align-self: center;
+      margin-bottom: 20px;
+      margin-right: 20px;
+    }
+    .deleteButton {
+      align-self: center;
+      margin-bottom: 20px;
+    }
   }
-  .file-field{
+
+  .file-field {
     width: 300px;
     align-self: center;
     margin-bottom: 20px;

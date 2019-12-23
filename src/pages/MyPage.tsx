@@ -90,7 +90,7 @@ export class MyPage extends React.Component<any, any> {
         return (
             <>
                 <Navbar history={this.props.history} token={this.state.token}/>
-                <h1>Hello {this.state.login}</h1>
+                <h1>Hello {this.state.userData.login}</h1>
             </>
         )
     }

@@ -67,6 +67,16 @@ export class Settings extends React.Component<any, any> {
             }
         })
     };
+    deleteUser = async () => {
+        try {
+             await userService.deleteUser();
+             console.log("user is deleted")
+            this.props.history.push("/")
+
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
     componentDidMount = async () => {
         try {
             const data = await userService.getMyPage();
@@ -98,7 +108,9 @@ export class Settings extends React.Component<any, any> {
                     nameHandler={this.nameHandler}
                     loginHandler={this.loginHandler}
                     passwordHandler={this.passwordHandler}
-                    history={this.props.history}/>
+                    history={this.props.history}
+                    deleteUser={this.deleteUser}
+                />
             </>
         )
     }
