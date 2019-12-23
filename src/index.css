@@ -28,4 +28,6 @@ h1{
   position: center;
 }
 .loader{
+  align-self: center;
+  justify-self: center;
 }

@@ -1,12 +1,25 @@
-.navbar header {
+.navbar header  {
   display: flex;
   flex-direction: row;
   justify-content: space-between ;
-  .navbar-login {
+  height: 80px;
+  .avatar {
     margin-right: 50px;
+    align-self: center;
   }
-  .navbar-logo:hover{
-    background: inherit;
+  span{
+    align-self: center;
+    .signIn-button {
+      margin-right: 20px;
+    }
+    .signUp-button{
+      margin-right: 20px;
+      border:1px white solid;
+
+    }
+    .logo:hover{
+      background: inherit;
+    }
   }
 }
 

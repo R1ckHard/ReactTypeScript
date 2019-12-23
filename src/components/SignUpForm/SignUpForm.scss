@@ -1,0 +1,25 @@
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: gray 0 0 10px 0;
+  border-radius: 3%;
+  width: 700px;
+  align-self: center;
+
+  .text-field {
+    width: 80%;
+    margin: 20px;
+    align-self: center;
+  }
+
+  .submitButton {
+    align-self: center;
+    margin-bottom: 20px;
+    margin-top:30px
+  }
+  h4{
+    align-self: center;
+
+  }
+}

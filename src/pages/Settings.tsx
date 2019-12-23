@@ -3,7 +3,7 @@ import {MyProfile} from "../components/MyProfile/MyProfile";
 import userService from "../service/UserService";
 import {Navbar} from "../components/Navbar/Navbar";
 
-export class MyPage extends React.Component<any, any> {
+export class Settings extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -21,12 +21,13 @@ export class MyPage extends React.Component<any, any> {
     handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            // let changeUserData = await userService.signIn(this.state.userData.login, this.state.userData.password);
-            //
-            // if (accessToken) {
-            //     localStorage.setItem("accessToken", accessToken);
-            //     this.props.history.push('/myPage');
-            // }
+            let changeUserData = await userService.updateUser(this.state.userData.login, this.state.userData.password, this.state.userData.name, this.state.userData.surname);
+            this.setState({
+                login: changeUserData.login,
+                password: changeUserData.password,
+                name: changeUserData.name,
+                surname: changeUserData.surname
+            })
 
         } catch (e) {
             console.log(e.message)
@@ -83,14 +84,21 @@ export class MyPage extends React.Component<any, any> {
             this.props.history.push('/login');
 
         }
-
     };
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         return (
             <>
                 <Navbar history={this.props.history} token={this.state.token}/>
-                <h1>Hello {this.state.login}</h1>
+                <MyProfile
+                    onSubmit={this.handleSubmit}
+                    userData={this.state.userData}
+                    token={this.state.token}
+                    surnameHandler={this.surnameHandler}
+                    nameHandler={this.nameHandler}
+                    loginHandler={this.loginHandler}
+                    passwordHandler={this.passwordHandler}
+                    history={this.props.history}/>
             </>
         )
     }

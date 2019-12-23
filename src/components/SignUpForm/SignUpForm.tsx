@@ -1,31 +1,26 @@
 import React, {FormEvent} from "react";
 import {TextField, Button, Typography} from "@material-ui/core/";
-import "./SIgnUnForm.scss";
+import "./SignUpForm.scss";
 import userService from "../../service/UserService";
 
-export class SignUpForm extends React.Component<any, any> {
+export class    SignUpForm extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
             userData: {
-                login: null,
-                password: null,
-                name:null,
-                surname:null,
+                login: '',
+                password: '',
+                name:'',
+                surname:'',
             }
-
         }
     }
 
     handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            let accessToken = await userService.signIn(this.state.userData.login, this.state.userData.password);
-            console.log(accessToken);
-            // if (accessToken) {
-            //     localStorage.setItem("accessToken", accessToken);
-            // }
-            // this.props.history.push('/myPage');
+            let user = await userService.signUp(this.state.userData.login, this.state.userData.password,this.state.userData.name,this.state.userData.surname);
+            this.props.history.push('/login');
 
         } catch (e) {
             if (e.status === 401) {
@@ -99,16 +94,15 @@ export class SignUpForm extends React.Component<any, any> {
                         className="text-field"
                         id="outlined"
                         variant="outlined"
-                        placeholder="Login"
+                        placeholder="Name"
                     />
                     <TextField
                         onChange={this.surnameHandler}
                         className="text-field"
                         id="outlined-password-input"
-                        type="password"
                         autoComplete="current-password"
                         variant="outlined"
-                        placeholder="Password"
+                        placeholder="Surname"
 
                     />
                     <Button className='submitButton' type="submit" variant="contained" color="primary">
