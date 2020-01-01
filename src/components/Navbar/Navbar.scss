@@ -9,11 +9,17 @@
     width: 200px;
     cursor: pointer;
   }
-  .menu{
-    top:60px;
+  .userName{
+    width: auto;
+    height: 80%;
+    align-self: center;
+    flex-direction: row;
+    display: flex;
   }
+
   .avatar {
     margin-right: 50px;
+    margin-left: 10px;
     //width: 200px;
     align-self: center;
     //background: red;

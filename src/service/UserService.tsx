@@ -14,13 +14,13 @@ const userService = {
         return userProfile.data;
 
     },
-    signUp: async (login: string, password: string,name:string,surname:string) => {
+    signUp: async (login: string, password: string, name: string, surname: string) => {
         let userRegistr = await axios
             .post("http://localhost:8000/registration", {
                     login: login,
                     password: password,
-                    name:name,
-                    surname:surname
+                    name: name,
+                    surname: surname
                 },
                 {
                     headers: {
@@ -31,25 +31,29 @@ const userService = {
         return userRegistr.data;
     },
 
-    updateUser: async (login: string, password: string,name:string,surname:string) => {
-        let deleteUser = await axios
+    updateUser: async (login: string,
+                       // password: string,
+                       name: string,
+                       surname: string) => {
+        let updateUser = await axios
             .put("http://localhost:8000/settings", {
                     login: login,
-                    password: password,
-                    name:name,
-                    surname:surname
+                    // password: password,
+                    name: name,
+                    surname: surname
                 },
                 {
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        Authorization: await localStorage.getItem("accessToken"),
                     }
                 })
-        return deleteUser.data;
+        return updateUser.data;
     },
 
     deleteUser: async () => {
         let deleteUser = await axios
-            .delete("http://localhost:8000/settings",{
+            .delete("http://localhost:8000/settings", {
                 headers: {
                     Authorization: await localStorage.getItem("accessToken"),
                 }

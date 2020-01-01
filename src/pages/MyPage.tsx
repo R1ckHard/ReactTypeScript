@@ -91,6 +91,9 @@ export class MyPage extends React.Component<any, any> {
             <>
                 <Navbar history={this.props.history} token={this.state.token}/>
                 <h1>Hello {this.state.userData.login}</h1>
+                <h1>Hello {this.state.userData.name}</h1>
+                <h1>Hello {this.state.userData.surname}</h1>
+
             </>
         )
     }

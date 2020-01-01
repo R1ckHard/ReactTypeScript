@@ -28,12 +28,11 @@ export class Navbar extends React.Component<any, any> {
     openMenu = (event: any) => {
         switch (event.target.innerHTML) {
             case "Settings":
-                return this.props.history.push("/settings")
-
-
+                return this.props.history.push("/settings");
             case "Logout":
-                return (localStorage.removeItem("accessToken"),this.props.history.push("/"))
-
+                return (localStorage.removeItem("accessToken"),this.props.history.push("/"));
+            case "My Page":
+               this.props.history.push("/myPage");
 
         }
     }
@@ -51,6 +50,8 @@ export class Navbar extends React.Component<any, any> {
                                                 color="inherit">LOGO</Button>
                                     </Typography>
                                 </Toolbar>
+                                <div className="userName">
+                                    <span>Name Surname</span>
                                     <Avatar className="avatar">
                                         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
                                             R
@@ -64,10 +65,13 @@ export class Navbar extends React.Component<any, any> {
                                             onClose={this.handleClose}
                                             onClick={this.openMenu}
                                         >
+                                            <MenuItem><span>My Page</span></MenuItem>
                                             <MenuItem><span>Settings</span></MenuItem>
                                             <MenuItem><span>Logout</span></MenuItem>
                                         </Menu>
                                     </Avatar>
+                                </div>
+
 
                             </AppBar>
 

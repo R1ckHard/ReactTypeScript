@@ -21,10 +21,13 @@ export class Settings extends React.Component<any, any> {
     handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            let changeUserData = await userService.updateUser(this.state.userData.login, this.state.userData.password, this.state.userData.name, this.state.userData.surname);
+            let changeUserData = await userService.updateUser(this.state.userData.login,
+                // this.state.userData.password,
+                this.state.userData.name,
+                this.state.userData.surname);
             this.setState({
                 login: changeUserData.login,
-                password: changeUserData.password,
+                // password: changeUserData.password,
                 name: changeUserData.name,
                 surname: changeUserData.surname
             })
@@ -60,7 +63,7 @@ export class Settings extends React.Component<any, any> {
         })
     };
     surnameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
+         this.setState({
             userData: {
                 ...this.state.userData,
                 surname: event.target.value
@@ -69,8 +72,8 @@ export class Settings extends React.Component<any, any> {
     };
     deleteUser = async () => {
         try {
-             await userService.deleteUser();
-             console.log("user is deleted")
+            await userService.deleteUser();
+            console.log("user is deleted")
             this.props.history.push("/")
 
         } catch (e) {
@@ -99,15 +102,19 @@ export class Settings extends React.Component<any, any> {
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         return (
             <>
-                <Navbar history={this.props.history} token={this.state.token}/>
+                <Navbar history={this.props.history}
+                        token={this.state.token}
+                        userData={this.state.userData}
+                />
+
                 <MyProfile
-                    onSubmit={this.handleSubmit}
+                    handleSubmit={this.handleSubmit}
                     userData={this.state.userData}
                     token={this.state.token}
                     surnameHandler={this.surnameHandler}
                     nameHandler={this.nameHandler}
                     loginHandler={this.loginHandler}
-                    passwordHandler={this.passwordHandler}
+                    // passwordHandler={this.passwordHandler}
                     history={this.props.history}
                     deleteUser={this.deleteUser}
                 />

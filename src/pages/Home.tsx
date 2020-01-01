@@ -4,10 +4,10 @@ import {Navbar} from "../components/Navbar/Navbar";
 
 export const Home: React.FunctionComponent = (props:any) => {
     return (
-        <div>
+        <>
             <Navbar history={props.history}/>
             <UserTable/>
-        </div>
+        </>
     )
 }
 

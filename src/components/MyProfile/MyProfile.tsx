@@ -19,18 +19,20 @@ export class MyProfile extends React.Component<any, any> {
                             </Typography>
                             <TextField
                                 value={this.props.userData.login}
+                                onChange={this.props.loginHandler}
                                 className="text-field"
                                 id="outlined"
                                 variant="outlined"
                             />
-                            <TextField
-                                placeholder="Input new password"
-                                className="text-field"
-                                id="outlined"
-                                variant="outlined"
-                            />
+                            {/*<TextField*/}
+                            {/*    placeholder="Input new password"*/}
+                            {/*    className="text-field"*/}
+                            {/*    id="outlined"*/}
+                            {/*    variant="outlined"*/}
+                            {/*/>*/}
                             <TextField
                                 value={this.props.userData.name}
+                                onChange={this.props.nameHandler}
                                 placeholder="Name"
                                 className="text-field"
                                 id="outlined"
@@ -38,6 +40,7 @@ export class MyProfile extends React.Component<any, any> {
                             />
                             <TextField
                                 value={this.props.userData.surname}
+                                onChange={this.props.surnameHandler}
                                 placeholder="Surname"
                                 className="text-field"
                                 id="outlined"
