@@ -6,22 +6,28 @@ import {Authorization} from "./pages/Authorization";
 import {MyPage} from "./pages/MyPage";
 import {Registration} from "./pages/Registration"
 import {Settings} from "./pages/Settings"
+import rootReducer from './store/reducers'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
+
+const store = createStore(rootReducer)
 
 class App extends React.Component<any, any> {
 
     render() {
         return (
-            <BrowserRouter>
+            <Provider store={store}>
+                <BrowserRouter>
 
-                <Switch>
-                    <Route component={Home} path="/" exact/>
-                    <Route component={Authorization} path="/login" exact/>
-                    <Route component={MyPage} path="/myPage" exact/>
-                    <Route component={Registration} path="/registration" exact/>
-                    <Route component={Settings} path="/settings" exact/>
-
-                </Switch>
-            </BrowserRouter>
+                    <Switch>
+                        <Route component={Home} path="/" exact/>
+                        <Route component={Authorization} path="/login" exact/>
+                        <Route component={MyPage} path="/myPage" exact/>
+                        <Route component={Registration} path="/registration" exact/>
+                        <Route component={Settings} path="/settings" exact/>
+                    </Switch>
+                </BrowserRouter>
+            </Provider>
         );
     }
 

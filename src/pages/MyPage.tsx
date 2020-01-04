@@ -12,7 +12,6 @@ export class MyPage extends React.Component<any, any> {
                 password: '',
                 name: '',
                 surname: '',
-                visible: false
             },
             token: false,
         }

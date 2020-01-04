@@ -69,8 +69,6 @@ export class MyProfile extends React.Component<any, any> {
                                     Delete
                                 </Button>
                             </span>
-
-
                         </form>
                     ) : <CircularProgress className='loader' disableShrink/>
                 }
