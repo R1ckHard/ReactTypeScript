@@ -2,22 +2,19 @@ import React, {FormEvent} from "react";
 import {SignInForm} from "../components/SignInForm/SignInForm";
 import userService from "../service/UserService";
 import {Navbar} from "../components/Navbar/Navbar";
+import {setAuthLogin, setAuthPassword} from '../store/auth/actions'
+import {connect} from 'react-redux'
 
 export class Authorization extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
-        this.state = {
-            userData: {
-                login: null,
-                password: null
-            },
-        }
+
     }
 
     handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            let accessToken = await userService.signIn(this.state.userData.login, this.state.userData.password);
+            let accessToken = await userService.signIn(this.props.login, this.props.password);
             if (accessToken) {
                 await localStorage.setItem("accessToken", accessToken);
                 this.props.history.push('/myPage');
@@ -29,25 +26,7 @@ export class Authorization extends React.Component<any, any> {
             console.log(e.message)
         }
     };
-    loginHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
-            userData: {
-                ...this.state.userData,
-                login: event.target.value
-            }
-        })
-        console.log(this.state.userData.login);
 
-    }
-    passwordHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
-            userData: {
-                ...this.state.userData,
-                password: event.target.value
-            }
-        })
-        console.log(this.state.userData.password);
-    }
     componentDidMount = async () => {
         try {
             const data = await userService.getMyPage();
@@ -65,8 +44,12 @@ export class Authorization extends React.Component<any, any> {
         return (
             <>
                 <Navbar history={this.props.history}/>
-                <SignInForm loginHandler={this.loginHandler}
-                            passwordHandler={this.passwordHandler}
+                <SignInForm setAuthLogin={setAuthLogin}
+                            setAuthPassword={setAuthPassword}
+                            login={this.props.login}
+                            password={this.props.password}
+                            // loginHandler={this.loginHandler}
+                            // passwordHandler={this.passwordHandler}
                             handleSubmit={this.handleSubmit}
                             history={this.props.history}/>
             </>
@@ -76,3 +59,15 @@ export class Authorization extends React.Component<any, any> {
 
 
 }
+
+const mapStateToProps = (state: any) => {
+    return {
+        login: state.auth.login,
+        password: state.auth.password
+    };
+}
+const mapDispatchToProps = {
+    setAuthLogin,
+    setAuthPassword
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Authorization)

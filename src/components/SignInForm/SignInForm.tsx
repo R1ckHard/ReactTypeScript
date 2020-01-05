@@ -5,7 +5,15 @@ import "./SignInForm.scss";
 export class SignInForm extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
+        
+    }
 
+    loginHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.props.setAuthLogin(event.target.value)
+
+    }
+    passwordHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.props.setAuthPassword(event.target.value)
     }
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
@@ -16,8 +24,8 @@ export class SignInForm extends React.Component<any, any> {
                         Sigh In Please
                     </Typography>
                     <TextField
-                        onChange={this.props.loginHandler}
-                        name="login"
+                        onChange={this.loginHandler}
+                        value={this.props.login}
                         className="text-field"
                         id="outlined"
                         variant="outlined"
@@ -25,7 +33,8 @@ export class SignInForm extends React.Component<any, any> {
                     />
                     <TextField
                         name="password"
-                        onChange={this.props.passwordHandler}
+                        onChange={this.passwordHandler}
+                        value={this.props.password}
                         className="text-field"
                         id="outlined-password-input"
                         type="password"

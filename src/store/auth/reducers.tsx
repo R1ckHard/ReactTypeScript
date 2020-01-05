@@ -9,6 +9,7 @@ const defaultState = {
 }
 
 export const authReducer = (state: any = defaultState, action: any) => {
+    console.log(state);
     switch (action.type) {
         case AUTH_CHANGE_LOGIN:
             return {

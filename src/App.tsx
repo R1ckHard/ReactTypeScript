@@ -18,7 +18,6 @@ class App extends React.Component<any, any> {
         return (
             <Provider store={store}>
                 <BrowserRouter>
-
                     <Switch>
                         <Route component={Home} path="/" exact/>
                         <Route component={Authorization} path="/login" exact/>
