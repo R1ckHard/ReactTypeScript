@@ -2,7 +2,7 @@ import React from 'react'
 import {Navbar} from "./components/Navbar/Navbar";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {Home} from "./pages/Home"
-import {Authorization} from "./pages/Authorization";
+import Authorization from "./pages/Authorization";
 import {MyPage} from "./pages/MyPage";
 import {Registration} from "./pages/Registration"
 import {Settings} from "./pages/Settings"
@@ -10,7 +10,7 @@ import rootReducer from './store/reducers'
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 
-const store = createStore(rootReducer)
+export const store = createStore(rootReducer)
 
 class App extends React.Component<any, any> {
 

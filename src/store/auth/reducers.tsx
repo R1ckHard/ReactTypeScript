@@ -1,25 +1,17 @@
 import {
-    AUTH_CHANGE_LOGIN,
-    AUTH_CHANGE_PASSWORD
+    AUTH_CHANGE_USER,
 } from './actions'
 
 const defaultState = {
-    login: '',
-    password: ''
+    userProfile:''
 }
 
 export const authReducer = (state: any = defaultState, action: any) => {
-    console.log(state);
     switch (action.type) {
-        case AUTH_CHANGE_LOGIN:
+        case AUTH_CHANGE_USER:
             return {
                 ...state,
-                login: action.payload
-            }
-        case AUTH_CHANGE_PASSWORD:
-            return {
-                ...state,
-                password: action.payload
+                userProfile: action.payload
             }
     }
     return state

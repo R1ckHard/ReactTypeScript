@@ -2,20 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8ec961e-4593-49d4-a84d-3836f434a92b" name="Default Changelist" comment="create">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/react_app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/react_app_ts.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MyProfile/MyProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MyProfile/MyProfile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar/Navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/Navbar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Settings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/UserService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/UserService.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SignInForm/SignInForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignInForm/SignInForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Authorization.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Authorization.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/auth/actions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth/actions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/auth/reducers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth/reducers.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +27,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1UWHsbMOfldKgMGO4R4EPXyeMaM" />
@@ -56,7 +56,7 @@
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -142,6 +142,7 @@
       <workItem from="1577359500413" duration="1739000" />
       <workItem from="1577444246393" duration="120000" />
       <workItem from="1577444676387" duration="7225000" />
+      <workItem from="1578482882147" duration="8371000" />
     </task>
     <task id="LOCAL-00001" summary="create project">
       <created>1575892319073</created>
@@ -258,15 +259,17 @@
     </state>
     <state x="555" y="265" width="800" height="543" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1577112833031" />
     <state x="555" y="285" width="800" height="543" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1575892326501" />
-    <state x="100" y="127" width="1720" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1576770093666">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="141" y="124" width="1455" height="829" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578496579190">
+      <screen x="56" y="27" width="1624" height="1023" />
     </state>
     <state x="100" y="127" width="1720" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1576770093666" />
-    <state x="624" y="231" key="run.anything.popup" timestamp="1576671496108">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="141" y="124" width="1455" height="829" key="com.intellij.history.integration.ui.views.FileHistoryDialog/56.27.1624.1023@56.27.1624.1023" timestamp="1578496579190" />
+    <state x="584" y="246" key="run.anything.popup" timestamp="1578489479252">
+      <screen x="56" y="27" width="1624" height="1023" />
     </state>
     <state x="624" y="231" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1576671496108" />
     <state x="624" y="252" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1575812460904" />
+    <state x="584" y="246" key="run.anything.popup/56.27.1624.1023@56.27.1624.1023" timestamp="1578489479252" />
     <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1576238389620">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
