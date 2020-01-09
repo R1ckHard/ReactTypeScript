@@ -31,7 +31,7 @@ export class Registration extends React.Component<any, any> {
         }
     };
     loginHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
+        this.setState({
             userData: {
                 ...this.state.userData,
                 login: event.target.value
@@ -39,7 +39,7 @@ export class Registration extends React.Component<any, any> {
         })
     };
     passwordHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
+        this.setState({
             userData: {
                 ...this.state.userData,
                 password: event.target.value
@@ -47,7 +47,7 @@ export class Registration extends React.Component<any, any> {
         })
     };
     nameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
+        this.setState({
             userData: {
                 ...this.state.userData,
                 name: event.target.value
@@ -55,7 +55,7 @@ export class Registration extends React.Component<any, any> {
         })
     };
     surnameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
+        this.setState({
             userData: {
                 ...this.state.userData,
                 surname: event.target.value

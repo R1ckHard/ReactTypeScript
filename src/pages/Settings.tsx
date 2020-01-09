@@ -12,6 +12,7 @@ export class Settings extends React.Component<any, any> {
                 password: '',
                 name: '',
                 surname: '',
+                image:''
             },
             token: false,
         }
@@ -62,7 +63,7 @@ export class Settings extends React.Component<any, any> {
         })
     };
     surnameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-         this.setState({
+        this.setState({
             userData: {
                 ...this.state.userData,
                 surname: event.target.value
@@ -79,6 +80,15 @@ export class Settings extends React.Component<any, any> {
             console.log(e.message)
         }
     }
+    imageHangler = async (event: React.ChangeEvent<HTMLInputElement>) =>{
+        this.setState({
+            userData:{
+                ...this.state.userData,
+                image:event.target.files
+            }
+        })
+    }
+
     componentDidMount = async () => {
         try {
             const data = await userService.getMyPage();
@@ -113,6 +123,7 @@ export class Settings extends React.Component<any, any> {
                     surnameHandler={this.surnameHandler}
                     nameHandler={this.nameHandler}
                     loginHandler={this.loginHandler}
+                    imageHangler={this.imageHangler}
                     // passwordHandler={this.passwordHandler}
                     history={this.props.history}
                     deleteUser={this.deleteUser}

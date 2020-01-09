@@ -46,11 +46,13 @@ export class MyProfile extends React.Component<any, any> {
                                 id="outlined"
                                 variant="outlined"
                             />
-                            {/*<TextField*/}
-                            {/*    className="file-field"*/}
-                            {/*    type="file"*/}
-                            {/*    id="file"*/}
-                            {/*    name="file" />*/}
+                            <TextField
+                                className="file-field"
+                                type="file"
+                                id="file"
+                                name="file" 
+                                onChange={this.props.imageHangler}
+                            />
                             <span>
                                 <Button
                                     className='submitButton'

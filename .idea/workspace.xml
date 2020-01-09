@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a8ec961e-4593-49d4-a84d-3836f434a92b" name="Default Changelist" comment="create">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+    <list default="true" id="a8ec961e-4593-49d4-a84d-3836f434a92b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SignInForm/SignInForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignInForm/SignInForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MyProfile/MyProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MyProfile/MyProfile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Authorization.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Authorization.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/auth/actions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth/actions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/auth/reducers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth/reducers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Registration.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Settings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/User.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../server_express" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -142,7 +141,8 @@
       <workItem from="1577359500413" duration="1739000" />
       <workItem from="1577444246393" duration="120000" />
       <workItem from="1577444676387" duration="7225000" />
-      <workItem from="1578482882147" duration="8371000" />
+      <workItem from="1578482882147" duration="8457000" />
+      <workItem from="1578564508999" duration="3731000" />
     </task>
     <task id="LOCAL-00001" summary="create project">
       <created>1575892319073</created>
@@ -186,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577112831146</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="refactor">
+      <created>1578496649298</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1578496649298</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,7 +208,8 @@
     <MESSAGE value="add Authorization,pages and service" />
     <MESSAGE value="bad commit" />
     <MESSAGE value="second bad commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="second bad commit" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
   <component name="WindowStateProjectService">
     <state x="567" y="165" width="800" height="684" key="#ESLint" timestamp="1575617249708">
@@ -216,11 +224,12 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1576071963558" />
-    <state x="834" y="0" width="882" height="987" key="CommitChangelistDialog2" timestamp="1577112830282">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="761" y="27" width="882" height="987" key="CommitChangelistDialog2" timestamp="1578496649084">
+      <screen x="56" y="27" width="1624" height="1023" />
     </state>
     <state x="834" y="0" width="882" height="987" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1577112830282" />
     <state x="834" y="27" width="864" height="987" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1576240483193" />
+    <state x="761" y="27" key="CommitChangelistDialog2/56.27.1624.1023@56.27.1624.1023" timestamp="1578496649084" />
     <state x="502" y="324" width="906" height="466" key="EditFileWatcherDialog" timestamp="1576073400520">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -254,11 +263,12 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="449" y="188" width="1022" height="737" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1575810694871" />
-    <state x="555" y="265" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1577112833031">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="525" y="278" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1578496654099">
+      <screen x="56" y="27" width="1624" height="1023" />
     </state>
     <state x="555" y="265" width="800" height="543" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1577112833031" />
     <state x="555" y="285" width="800" height="543" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1575892326501" />
+    <state x="525" y="278" key="Vcs.Push.Dialog.v2/56.27.1624.1023@56.27.1624.1023" timestamp="1578496654099" />
     <state x="141" y="124" width="1455" height="829" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578496579190">
       <screen x="56" y="27" width="1624" height="1023" />
     </state>

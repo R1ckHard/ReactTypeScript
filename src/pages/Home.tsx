@@ -6,7 +6,6 @@ export const Home: React.FunctionComponent = (props:any) => {
     return (
         <>
             <Navbar history={props.history}/>
-            <UserTable/>
         </>
     )
 }

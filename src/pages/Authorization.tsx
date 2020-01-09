@@ -14,21 +14,21 @@ export default class Authorization extends React.Component<any, any> {
     handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         console.log(this.props)
         event.preventDefault();
-        // try {
-        //     let accessToken = await userService.signIn(this.props.login, this.props.password);
-        //     if (accessToken) {
-        //         await localStorage.setItem("accessToken", accessToken);
-        //         let user = await userService.getMyPage();
-        //         this.props.setAuthLogin(user);
-        //         console.log(user)
-        //             // this.props.history.push('/myPage');
-        //     }
-        // } catch (e) {
-        //     if (e.status === 401) {
-        //         console.log('invaligLogin')
-        //     }
-        //     console.log(e.message)
-        // }
+        try {
+            let accessToken = await userService.signIn(this.props.login, this.props.password);
+            if (accessToken) {
+                await localStorage.setItem("accessToken", accessToken);
+                let user = await userService.getMyPage();
+                this.props.setAuthLogin(user);
+                console.log(user)
+                    this.props.history.push('/myPage');
+            }
+        } catch (e) {
+            if (e.status === 401) {
+                console.log('invaligLogin')
+            }
+            console.log(e.message)
+        }
     };
 
     componentDidMount = async () => {

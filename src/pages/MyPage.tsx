@@ -17,54 +17,53 @@ export class MyPage extends React.Component<any, any> {
         }
     }
 
-    handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        try {
-            // let changeUserData = await userService.signIn(this.state.userData.login, this.state.userData.password);
-            //
-            // if (accessToken) {
-            //     localStorage.setItem("accessToken", accessToken);
-            //     this.props.history.push('/myPage');
-            // }
-
-        } catch (e) {
-            console.log(e.message)
-        }
-    };
-
-    loginHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
-            userData: {
-                ...this.state.userData,
-                login: event.target.value
-            }
-        })
-    }
-    passwordHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
-            userData: {
-                ...this.state.userData,
-                password: event.target.value
-            }
-        })
-
-    }
-    nameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
-            userData: {
-                ...this.state.userData,
-                name: event.target.value
-            }
-        })
-    };
-    surnameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
-            userData: {
-                ...this.state.userData,
-                surname: event.target.value
-            }
-        })
-    };
+    // handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    //     event.preventDefault();
+    //     try {
+    //         let changeUserData = await userService.signIn(this.state.userData.login, this.state.userData.password);
+    //         if (changeUserData) {
+    //             localStorage.setItem("accessToken", changeUserData);
+    //             this.props.history.push('/myPage');
+    //         }
+    //
+    //     } catch (e) {
+    //         console.log(e.message)
+    //     }
+    // };
+    //
+    // loginHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    //      this.setState({
+    //         userData: {
+    //             ...this.state.userData,
+    //             login: event.target.value
+    //         }
+    //     })
+    // }
+    // passwordHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    //      this.setState({
+    //         userData: {
+    //             ...this.state.userData,
+    //             password: event.target.value
+    //         }
+    //     })
+    //
+    // }
+    // nameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    //      this.setState({
+    //         userData: {
+    //             ...this.state.userData,
+    //             name: event.target.value
+    //         }
+    //     })
+    // };
+    // surnameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    //      this.setState({
+    //         userData: {
+    //             ...this.state.userData,
+    //             surname: event.target.value
+    //         }
+    //     })
+    // };
     componentDidMount = async () => {
         try {
             const data = await userService.getMyPage();
