@@ -60,6 +60,16 @@ const userService = {
             })
         return deleteUser.data;
     },
+    updateImage: async (image:any) => {
+        let userImage = await axios
+            .put("http://localhost:8000/uploads", {
+                image:image
+            }, {
+                headers: {
+                    Authorization: await localStorage.getItem("accessToken"),
+                }
+            })
+    },
 
     signIn: async (login: string, password: string) => {
         let userAuth = await axios
