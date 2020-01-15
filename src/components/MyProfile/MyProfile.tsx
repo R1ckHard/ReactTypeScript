@@ -19,10 +19,11 @@ export class MyProfile extends React.Component<any, any> {
                             </Typography>
                             <TextField
                                 value={this.props.userData.login}
-                                onChange={this.props.loginHandler}
+                                onChange={this.props.inputHandler}
                                 className="text-field"
                                 id="outlined"
                                 variant="outlined"
+                                name='login'
                             />
                             {/*<TextField*/}
                             {/*    placeholder="Input new password"*/}
@@ -31,16 +32,18 @@ export class MyProfile extends React.Component<any, any> {
                             {/*    variant="outlined"*/}
                             {/*/>*/}
                             <TextField
+                                name='name'
                                 value={this.props.userData.name}
-                                onChange={this.props.nameHandler}
+                                onChange={this.props.inputHandler}
                                 placeholder="Name"
                                 className="text-field"
                                 id="outlined"
                                 variant="outlined"
                             />
                             <TextField
+                                name='surname'
                                 value={this.props.userData.surname}
-                                onChange={this.props.surnameHandler}
+                                onChange={this.props.inputHandler}
                                 placeholder="Surname"
                                 className="text-field"
                                 id="outlined"
@@ -50,8 +53,8 @@ export class MyProfile extends React.Component<any, any> {
                                 className="file-field"
                                 type="file"
                                 id="file"
-                                name="file" 
-                                onChange={this.props.imageHangler}
+                                name="image" 
+                                onChange={this.props.inputHandler}
                             />
                             <span>
                                 <Button

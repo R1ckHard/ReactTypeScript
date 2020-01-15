@@ -20,56 +20,25 @@ export class Settings extends React.Component<any, any> {
 
     handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        try {
-            let changeUserData = await userService.updateUser(this.state.userData.login,
-                // this.state.userData.password,
+        console.log(this.state.userData);
+        if (this.state.userData.image) {
+            const data = new FormData();
+            data.append("imageName",this.state.userData.image);
+            let updateImage = await userService.updateImage(data);
+            this.props.setUserProfile(updateImage);
+        }
+        let changeUserData = await userService.updateUser(this.state.userData.login,
                 this.state.userData.name,
                 this.state.userData.surname);
             this.setState({
                 login: changeUserData.login,
-                // password: changeUserData.password,
                 name: changeUserData.name,
                 surname: changeUserData.surname
             })
-
-        } catch (e) {
-            console.log(e.message)
-        }
+        
     };
 
-    loginHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
-            userData: {
-                ...this.state.userData,
-                login: event.target.value
-            }
-        })
-    }
-    passwordHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
-            userData: {
-                ...this.state.userData,
-                password: event.target.value
-            }
-        })
-
-    }
-    nameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        await this.setState({
-            userData: {
-                ...this.state.userData,
-                name: event.target.value
-            }
-        })
-    };
-    surnameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            userData: {
-                ...this.state.userData,
-                surname: event.target.value
-            }
-        })
-    };
+    
     deleteUser = async () => {
         try {
             await userService.deleteUser();
@@ -80,14 +49,15 @@ export class Settings extends React.Component<any, any> {
             console.log(e.message)
         }
     }
-    imageHangler = async (event: React.ChangeEvent<HTMLInputElement>) =>{
+
+    inputHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
-            userData:{
+            userData: {
                 ...this.state.userData,
-                image:event.target.files
+                [event.target.name]: event.target.value
             }
         })
-    }
+    };
 
     componentDidMount = async () => {
         try {
@@ -120,11 +90,7 @@ export class Settings extends React.Component<any, any> {
                     handleSubmit={this.handleSubmit}
                     userData={this.state.userData}
                     token={this.state.token}
-                    surnameHandler={this.surnameHandler}
-                    nameHandler={this.nameHandler}
-                    loginHandler={this.loginHandler}
-                    imageHangler={this.imageHangler}
-                    // passwordHandler={this.passwordHandler}
+                    inputHandler={this.inputHandler}
                     history={this.props.history}
                     deleteUser={this.deleteUser}
                 />

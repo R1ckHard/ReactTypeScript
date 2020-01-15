@@ -30,35 +30,12 @@ export class Registration extends React.Component<any, any> {
             console.log(e.message)
         }
     };
-    loginHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({
+
+    inputHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+          this.setState({
             userData: {
                 ...this.state.userData,
-                login: event.target.value
-            }
-        })
-    };
-    passwordHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            userData: {
-                ...this.state.userData,
-                password: event.target.value
-            }
-        })
-    };
-    nameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            userData: {
-                ...this.state.userData,
-                name: event.target.value
-            }
-        })
-    };
-    surnameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            userData: {
-                ...this.state.userData,
-                surname: event.target.value
+                [event.target.name]: event.target.value
             }
         })
     };
@@ -68,11 +45,8 @@ export class Registration extends React.Component<any, any> {
             <>
                 <Navbar history={this.props.history}/>
                 <SignUpForm
-                    handleSubmit={this.handleSubmit}
-                    loginHandler={this.loginHandler}
-                    passwordHandler={this.passwordHandler}
-                    nameHandler={this.nameHandler}
-                    surnameHandler={this.surnameHandler}
+                    userData={this.state.userData}
+                    inputHandler={this.inputHandler}
                     history={this.props.history}/>
             </>
         )

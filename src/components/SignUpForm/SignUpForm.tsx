@@ -14,7 +14,8 @@ export class  SignUpForm extends React.Component<any, any> {
                         Sigh Up Please
                     </Typography>
                     <TextField
-                        onChange={this.props.loginHandler}
+                        onChange={this.props.inputHandler}
+                        value={this.props.userData.login}
                         name="login"
                         className="text-field"
                         id="outlined"
@@ -23,7 +24,8 @@ export class  SignUpForm extends React.Component<any, any> {
                     />
                     <TextField
                         name="password"
-                        onChange={this.props.passwordHandler}
+                        onChange={this.props.inputHandler}
+                        value={this.props.userData.password}
                         className="text-field"
                         id="outlined-password-input"
                         type="password"
@@ -33,14 +35,18 @@ export class  SignUpForm extends React.Component<any, any> {
 
                     />
                     <TextField
-                        onChange={this.props.nameHandler}
+                        onChange={this.props.inputHandler}
+                        value={this.props.userData.name}
+                        name="name"
                         className="text-field"
                         id="outlined"
                         variant="outlined"
                         placeholder="Name"
                     />
                     <TextField
-                        onChange={this.props.surnameHandler}
+                        onChange={this.props.inputHandler}
+                        value={this.props.userData.surname}
+                        name='surname'
                         className="text-field"
                         id="outlined-password-input"
                         autoComplete="current-password"

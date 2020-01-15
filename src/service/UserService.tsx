@@ -62,13 +62,14 @@ const userService = {
     },
     updateImage: async (image:any) => {
         let userImage = await axios
-            .put("http://localhost:8000/uploads", {
-                image:image
+            .post("http://localhost:8000/uploads/uploadImage", {
+                image
             }, {
                 headers: {
                     Authorization: await localStorage.getItem("accessToken"),
                 }
             })
+        return userImage
     },
 
     signIn: async (login: string, password: string) => {
