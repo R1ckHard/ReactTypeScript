@@ -4,14 +4,15 @@ import "./SignInForm.scss";
 import userService from "../../service/UserService";
 import {setAuthUser} from '../../store/auth/actions';
 import {connect} from 'react-redux'
-import rootReducer from '../../store/reducers'
-import {createStore} from 'redux'
 import {store} from '../../App';
 
+// interface State {
+//     login:any,
+//     password:any
+// }
 class SignInForm extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
-        console.log(props)
         this.state = {
             login: '',
             password: ''
@@ -19,16 +20,16 @@ class SignInForm extends React.Component<any, any> {
     }
 
     componentDidMount = () => {
-        console.log(this.props.userProfile)
+        console.log(this.props)
         store.subscribe(() => {
             if (this.props.userProfile !== store.getState().auth.userProfile) {
-                console.log(1)
                 console.log(store.getState().auth.userProfile)
             }
-
         })
+        console.log(store.getState().auth.userProfile)
+
     }
-    
+
     inputHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -42,7 +43,7 @@ class SignInForm extends React.Component<any, any> {
             if (accessToken) {
                 await localStorage.setItem("accessToken", accessToken);
                 let user = await userService.getMyPage();
-                this.props.setAuthLogin(user);
+                this.props.setAuthUser(user);
                 this.props.history.push('/myPage');
             }
         } catch (e) {
@@ -51,6 +52,7 @@ class SignInForm extends React.Component<any, any> {
             }
             console.log(e.message)
         }
+        console.log(this.props);
     };
 
 
@@ -93,16 +95,12 @@ class SignInForm extends React.Component<any, any> {
 
 const mapStateToProps = (state: any) => {
     return {
-        userProfile: state.auth.login
+        userProfile: state.auth.userProfile
     };
 }
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        setAuthLogin: (user: any) => {
-            dispatch(setAuthUser(user))
-        },
-        // setAuthPassword
-    }
+const mapDispatchToProps = {
+    setAuthUser,
+
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SignInForm)
 

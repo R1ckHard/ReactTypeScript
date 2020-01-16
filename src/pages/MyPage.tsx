@@ -1,7 +1,9 @@
 import React, {FormEvent} from "react";
 import {MyProfile} from "../components/MyProfile/MyProfile";
 import userService from "../service/UserService";
-import {Navbar} from "../components/Navbar/Navbar";
+import Navbar from "../components/Navbar/Navbar";
+import {CircularProgress} from "@material-ui/core";
+
 
 export class MyPage extends React.Component<any, any> {
     constructor(props: any) {
@@ -9,61 +11,15 @@ export class MyPage extends React.Component<any, any> {
         this.state = {
             userData: {
                 login: '',
-                password: '',
                 name: '',
                 surname: '',
+                image: ''
             },
             token: false,
         }
     }
 
-    // handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    //     event.preventDefault();
-    //     try {
-    //         let changeUserData = await userService.signIn(this.state.userData.login, this.state.userData.password);
-    //         if (changeUserData) {
-    //             localStorage.setItem("accessToken", changeUserData);
-    //             this.props.history.push('/myPage');
-    //         }
-    //
-    //     } catch (e) {
-    //         console.log(e.message)
-    //     }
-    // };
-    //
-    // loginHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    //      this.setState({
-    //         userData: {
-    //             ...this.state.userData,
-    //             login: event.target.value
-    //         }
-    //     })
-    // }
-    // passwordHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    //      this.setState({
-    //         userData: {
-    //             ...this.state.userData,
-    //             password: event.target.value
-    //         }
-    //     })
-    //
-    // }
-    // nameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    //      this.setState({
-    //         userData: {
-    //             ...this.state.userData,
-    //             name: event.target.value
-    //         }
-    //     })
-    // };
-    // surnameHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    //      this.setState({
-    //         userData: {
-    //             ...this.state.userData,
-    //             surname: event.target.value
-    //         }
-    //     })
-    // };
+
     componentDidMount = async () => {
         try {
             const data = await userService.getMyPage();
@@ -73,10 +29,12 @@ export class MyPage extends React.Component<any, any> {
                     login: data.login,
                     name: data.name,
                     surname: data.surname,
+                    image: data.image
                 },
                 token: true,
-
             })
+            console.log(this.state)
+
         } catch (e) {
             this.props.history.push('/login');
 
@@ -87,10 +45,16 @@ export class MyPage extends React.Component<any, any> {
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         return (
             <>
-                <Navbar history={this.props.history} token={this.state.token}/>
-                <h1>Hello {this.state.userData.login}</h1>
-                <h1>Hello {this.state.userData.name}</h1>
-                <h1>Hello {this.state.userData.surname}</h1>
+                {this.state.token ? (
+                    <>
+                        <Navbar history={this.props.history} token={this.state.token}/>
+                        <h1>Hello {this.state.userData.login}</h1>
+                        <h1>Hello {this.state.userData.name}</h1>
+                        <h1>Hello {this.state.userData.surname}</h1>
+                        <img src={`http://localhost:8000/${this.state.userData.image}`} alt="myImage"/>
+                    </>
+                ) : <CircularProgress className='loader' disableShrink/>
+                }
 
             </>
         )

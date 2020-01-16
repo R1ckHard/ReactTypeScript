@@ -1,10 +1,10 @@
-import React, {FormEvent} from "react";
+import React from "react";
 import SignInForm from "../components/SignInForm/SignInForm";
 import userService from "../service/UserService";
-import {Navbar} from "../components/Navbar/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 
 
-export default class Authorization extends React.Component<any, any> {
+export default class Login extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
 
@@ -13,7 +13,7 @@ export default class Authorization extends React.Component<any, any> {
         try {
             const data = await userService.getMyPage();
             if (data) {
-                this.props.history.push("/myPage")
+               this.props.history.push("/myPage")
             }
 
         } catch (e) {

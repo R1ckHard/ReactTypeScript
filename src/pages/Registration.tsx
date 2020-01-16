@@ -1,10 +1,18 @@
 import React, {FormEvent} from "react";
 import {SignUpForm} from "../components/SignUpForm/SignUpForm";
-import {Navbar} from "../components/Navbar/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import userService from "../service/UserService";
 
+interface State {
+    userData: {
+        login: string,
+        password: string,
+        name: string,
+        surname: string,
+    },
+}
 
-export class Registration extends React.Component<any, any> {
+export class Registration extends React.Component<any, State> {
     constructor(props: any) {
         super(props);
         this.state = {

@@ -10,7 +10,6 @@ const userService = {
                     Authorization: await localStorage.getItem("accessToken"),
                 }
             })
-        console.log(userProfile)
         return userProfile.data;
 
     },

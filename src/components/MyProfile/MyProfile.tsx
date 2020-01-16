@@ -25,12 +25,6 @@ export class MyProfile extends React.Component<any, any> {
                                 variant="outlined"
                                 name='login'
                             />
-                            {/*<TextField*/}
-                            {/*    placeholder="Input new password"*/}
-                            {/*    className="text-field"*/}
-                            {/*    id="outlined"*/}
-                            {/*    variant="outlined"*/}
-                            {/*/>*/}
                             <TextField
                                 name='name'
                                 value={this.props.userData.name}

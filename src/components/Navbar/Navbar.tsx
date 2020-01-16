@@ -1,11 +1,20 @@
 import React from "react"
 import './Navbar.scss';
 import {MenuItem, Menu, Avatar, Button, Typography, Toolbar, AppBar} from '@material-ui/core/';
+import {setAuthUser} from '../../store/auth/actions';
+import {connect} from 'react-redux'
+import {store} from '../../App';
 
+interface State {
+    menuIsVisible: boolean,
+    anchorEl: Element | null | undefined
+}
 
-export class Navbar extends React.Component<any, any> {
+class Navbar extends React.Component<any, State> {
     constructor(props: any) {
         super(props);
+        console.log(this.props);
+
         this.state = {
             menuIsVisible: false,
             anchorEl: null,
@@ -30,11 +39,21 @@ export class Navbar extends React.Component<any, any> {
             case "Settings":
                 return this.props.history.push("/settings");
             case "Logout":
-                return (localStorage.removeItem("accessToken"),this.props.history.push("/"));
+                return (localStorage.removeItem("accessToken"), this.props.history.push("/"));
             case "My Page":
-               this.props.history.push("/myPage");
+                this.props.history.push("/myPage");
 
         }
+    }
+
+    componentDidMount = () => {
+        store.subscribe(() => {
+            if (this.props.userProfile !== store.getState().auth.userProfile) {
+                console.log(store.getState().auth.userProfile);
+                console.log(this.props);
+
+            }
+        })
     }
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
@@ -51,10 +70,12 @@ export class Navbar extends React.Component<any, any> {
                                     </Typography>
                                 </Toolbar>
                                 <div className="userName">
-                                    <span>Name Surname</span>
-                                    <Avatar className="avatar">
+                                    <span>{this.props.userProfile.name} {this.props.userProfile.surname}</span>
+                                    <Avatar className="avatar-container">
                                         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
-                                            R
+                                           <span>
+                                               <img src={`http://localhost:8000/${this.props.userProfile.image}`} className='avatar' alt="myImage" />
+                                           </span> 
                                         </Button>
                                         <Menu
                                             className='menu'
@@ -96,7 +117,7 @@ export class Navbar extends React.Component<any, any> {
                                         onClick={() =>
                                             this.props.history.push("/registration")}
                                         className="signUp-button"
-                                        color="inherit">Sigh Up</Button>
+                                        color="inherit">Sign Up</Button>
                                 </span>
 
                             </AppBar>
@@ -111,40 +132,14 @@ export class Navbar extends React.Component<any, any> {
 }
 
 
-// export const Navbar: React.FC<NavbarProps> = ({token}) => {
-//     console.log(token);
-//     return (
-//         <>
-//             {token ? (<div className="navbar">
-//                         <AppBar position="static">
-//                             <Toolbar>
-//                                 <Typography variant="h6">
-//                                     <Button href="/" className="logo" color="inherit">LOGO</Button>
-//
-//                                 </Typography>
-//                             </Toolbar>
-//                             <Avatar className="avatar">RIHARD</Avatar>
-//                         </AppBar>
-//                     </div>
-//                 ) :
-//                 (<div className="navbar">
-//                         <AppBar position="static">
-//                             <Toolbar>
-//                                 <Typography variant="h6">
-//                                     <Button href="/" className="logo" color="inherit">LOGO</Button>
-//                                 </Typography>
-//                             </Toolbar>
-//                             <span>
-//                     <Button href="/login" className="signIn-button" color="inherit">Sign In</Button>
-//                 <Button href="/registration" className="signUp-button" color="inherit">Sigh Up</Button>
-//                 </span>
-//                         </AppBar>
-//                     </div>
-//                 )
-//             }
-//
-//         </>
-//
-//     )
-// }
-//
+const mapStateToProps = (state: any) => {
+    return {
+        userProfile: state.auth.userProfile
+    };
+}
+const mapDispatchToProps = {
+    setAuthUser,
+
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+
