@@ -53,6 +53,7 @@ export class Registration extends React.Component<any, State> {
             <>
                 <Navbar history={this.props.history}/>
                 <SignUpForm
+                    handleSubmit={this.handleSubmit}
                     userData={this.state.userData}
                     inputHandler={this.inputHandler}
                     history={this.props.history}/>

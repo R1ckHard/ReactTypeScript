@@ -41,6 +41,7 @@ export class MyPage extends React.Component<any, any> {
         }
 
     };
+    
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         return (
@@ -53,7 +54,10 @@ export class MyPage extends React.Component<any, any> {
                         <h1>Hello {this.state.userData.surname}</h1>
                         <img src={`http://localhost:8000/${this.state.userData.image}`} alt="myImage"/>
                     </>
-                ) : <CircularProgress className='loader' disableShrink/>
+
+                ) : <div className='container'>
+                    <CircularProgress className='loader' disableShrink/>
+                </div>
                 }
 
             </>

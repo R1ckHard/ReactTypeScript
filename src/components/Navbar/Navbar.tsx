@@ -3,7 +3,6 @@ import './Navbar.scss';
 import {MenuItem, Menu, Avatar, Button, Typography, Toolbar, AppBar} from '@material-ui/core/';
 import {setAuthUser} from '../../store/auth/actions';
 import {connect} from 'react-redux'
-import {store} from '../../App';
 
 interface State {
     menuIsVisible: boolean,
@@ -47,13 +46,13 @@ class Navbar extends React.Component<any, State> {
     }
 
     componentDidMount = () => {
-        store.subscribe(() => {
-            if (this.props.userProfile !== store.getState().auth.userProfile) {
-                console.log(store.getState().auth.userProfile);
-                console.log(this.props);
-
-            }
-        })
+        // store.subscribe(() => {
+        //     if (this.props.userProfile !== store.getState().auth.userProfile) {
+        //         console.log(store.getState().auth.userProfile);
+        //         console.log(this.props);
+        //
+        //     }
+        // })
     }
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {

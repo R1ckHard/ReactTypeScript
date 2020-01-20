@@ -48,7 +48,7 @@ export class MyProfile extends React.Component<any, any> {
                                 type="file"
                                 id="file"
                                 name="image" 
-                                onChange={this.props.inputHandler}
+                                onChange={this.props.updateImage}
                             />
                             <span>
                                 <Button

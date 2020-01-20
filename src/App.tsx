@@ -4,18 +4,25 @@ import {Home} from "./pages/Home"
 import Login from "./pages/Login";
 import {MyPage} from "./pages/MyPage";
 import {Registration} from "./pages/Registration"
-import {Settings} from "./pages/Settings"
-import rootReducer from './store/reducers'
-import {Provider} from 'react-redux'
-import {createStore} from 'redux'
+import {connect} from 'react-redux'
+import {setAuthUser} from './store/auth/actions';
+import userService from "./service/UserService";
+import Settings from './pages/Settings';
 
-export const store = createStore(rootReducer)
 
 class App extends React.Component<any, any> {
 
+
+    componentDidMount = async () => {
+        const data = await userService.getMyPage();
+        if(data){
+            this.props.setAuthUser(data);
+        }
+
+    }
+
     render() {
         return (
-            <Provider store={store}>
                 <BrowserRouter>
                     <Switch>
                         <Route component={Home} path="/" exact/>
@@ -25,11 +32,15 @@ class App extends React.Component<any, any> {
                         <Route component={Settings} path="/settings" exact/>
                     </Switch>
                 </BrowserRouter>
-            </Provider>
         );
     }
 
 
 }
 
-export default App;
+
+const mapDispatchToProps = {
+    setAuthUser,
+
+}
+export default connect(null,mapDispatchToProps)(App)

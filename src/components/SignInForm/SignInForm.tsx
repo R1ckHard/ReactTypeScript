@@ -4,7 +4,7 @@ import "./SignInForm.scss";
 import userService from "../../service/UserService";
 import {setAuthUser} from '../../store/auth/actions';
 import {connect} from 'react-redux'
-import {store} from '../../App';
+import {store} from '../../index';
 
 // interface State {
 //     login:any,
@@ -38,6 +38,7 @@ class SignInForm extends React.Component<any, any> {
 
     handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        console.log(this.state);
         try {
             let accessToken = await userService.signIn(this.state.login, this.state.password);
             if (accessToken) {

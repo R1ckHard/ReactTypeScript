@@ -2,6 +2,7 @@ import {
     SETTINGS_CHANGE_LOGIN,
     SETTINGS_CHANGE_NAME,
     SETTINGS_CHANGE_SURNAME,
+    SETTINGS_CHANGE_IMAGE
 
 } from './actions'
 
@@ -9,7 +10,8 @@ import {
 const defaultState = {
     login: '',
     name:'',
-    surname:''
+    surname:'',
+    image:''
 }
 
 export const settingsReducer = (state: any = defaultState, action: any) => {
@@ -28,6 +30,11 @@ export const settingsReducer = (state: any = defaultState, action: any) => {
             return {
                 ...state,
                 surname: action.payload
+            }
+        case SETTINGS_CHANGE_IMAGE:
+            return {
+                ...state,
+                image: action.payload
             }
     }
     return state

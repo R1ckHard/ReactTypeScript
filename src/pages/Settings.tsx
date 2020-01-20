@@ -3,6 +3,9 @@ import {MyProfile} from "../components/MyProfile/MyProfile";
 import userService from "../service/UserService";
 import Navbar from "../components/Navbar/Navbar";
 import {CircularProgress} from "@material-ui/core";
+import {connect} from 'react-redux'
+import {setAuthUser} from './../store/auth/actions';
+
 
 
 // interface State {
@@ -15,7 +18,7 @@ import {CircularProgress} from "@material-ui/core";
 //     token: boolean,
 // }
 
-export class Settings extends React.Component<any, any> {
+class Settings extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -23,7 +26,7 @@ export class Settings extends React.Component<any, any> {
                 login: '',
                 name: '',
                 surname: '',
-                image: ''
+                image: null
             },
             token: false,
         }
@@ -34,9 +37,10 @@ export class Settings extends React.Component<any, any> {
         console.log(this.state.userData);
         if (this.state.userData.image) {
             const data = new FormData();
-            data.append("imageName", this.state.userData.image);
+            data.append("image", this.state.userData.image);
+            console.log(data);
             let updateImage = await userService.updateImage(data);
-            this.props.setUserProfile(updateImage);
+            this.props.setAuthUser(updateImage);
         }
         let changeUserData = await userService.updateUser(this.state.userData.login,
             this.state.userData.name,
@@ -66,6 +70,15 @@ export class Settings extends React.Component<any, any> {
             userData: {
                 ...this.state.userData,
                 [event.target.name]: event.target.value
+            }
+        })
+    };
+
+    updateImage = async (event: any) => {
+        this.setState({
+            userData: {
+                ...this.state.userData,
+                image: event.target.files[0]
             }
         })
     };
@@ -103,20 +116,28 @@ export class Settings extends React.Component<any, any> {
                                 userData={this.state.userData}
                                 token={this.state.token}
                                 inputHandler={this.inputHandler}
+                                updateImage={this.updateImage}
                                 history={this.props.history}
                                 deleteUser={this.deleteUser}
                             />
                         </>
                     ) :
-                    <>
+                    <div className='container'>
                         <CircularProgress className='loader' disableShrink/>
-                    </>
+                    </div>
                 }
 
             </>
         )
     }
-
-
 }
 
+const mapStateToProps = (state: any) => {
+    return {
+        userProfile: state.settings.userProfile
+    };
+}
+const mapDispatchToProps = {
+    setAuthUser,
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Settings)

@@ -18,6 +18,7 @@ code {
 .container{
   display: flex;
   width: 80%;
+  height: 100%;
   padding: 20px;
   flex-direction: column;
   margin: auto;
@@ -28,6 +29,5 @@ h1{
   position: center;
 }
 .loader{
-  align-self: center;
-  justify-self: center;
+  margin: auto;
 }

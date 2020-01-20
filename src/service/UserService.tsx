@@ -59,15 +59,14 @@ const userService = {
             })
         return deleteUser.data;
     },
-    updateImage: async (image:any) => {
+    updateImage: async (image: any) => {
         let userImage = await axios
-            .post("http://localhost:8000/uploads/uploadImage", {
-                image
-            }, {
-                headers: {
-                    Authorization: await localStorage.getItem("accessToken"),
-                }
-            })
+            .post("http://localhost:8000/users/uploadImage", image
+                , {
+                    headers: {
+                        Authorization: localStorage.getItem("accessToken"),
+                    }
+                })
         return userImage
     },
 
