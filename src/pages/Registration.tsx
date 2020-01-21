@@ -27,6 +27,7 @@ export class Registration extends React.Component<any, State> {
 
     handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        console.log(this.state.userData);
         try {
             let user = await userService.signUp(this.state.userData.login, this.state.userData.password, this.state.userData.name, this.state.userData.surname);
             this.props.history.push('/login');

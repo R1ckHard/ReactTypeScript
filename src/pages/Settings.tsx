@@ -7,7 +7,6 @@ import {connect} from 'react-redux'
 import {setAuthUser} from './../store/auth/actions';
 
 
-
 // interface State {
 //     userData: {
 //         login: string,
@@ -46,10 +45,10 @@ class Settings extends React.Component<any, any> {
             this.state.userData.name,
             this.state.userData.surname);
         this.setState({
-            ...this.state.userData,
             login: changeUserData.login,
             name: changeUserData.name,
-            surname: changeUserData.surname
+            surname: changeUserData.surname,
+            image: changeUserData.image
         })
 
     };
@@ -88,10 +87,10 @@ class Settings extends React.Component<any, any> {
             const data = await userService.getMyPage();
             this.setState({
                 userData: {
-                    ...this.state.userData,
                     login: data.login,
                     name: data.name,
                     surname: data.surname,
+                    image: data.surname
                 },
                 token: true,
 

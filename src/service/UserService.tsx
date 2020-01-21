@@ -1,8 +1,10 @@
 import axios from "axios";
 
+require('dotenv').config();
+console.log(process.env.BASE_API_URL);
+
 // const accessToken: any = localStorage.getItem("accessToken");
 const userService = {
-
     getMyPage: async () => {
         let userProfile = await axios
             .get("http://localhost:8000/myPage", {
