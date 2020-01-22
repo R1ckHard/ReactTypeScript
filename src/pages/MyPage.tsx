@@ -3,9 +3,18 @@ import {MyProfile} from "../components/MyProfile/MyProfile";
 import userService from "../service/UserService";
 import Navbar from "../components/Navbar/Navbar";
 import {CircularProgress} from "@material-ui/core";
+interface State {
+    userData: {
+        login: string,
+        name: string,
+        surname: string,
+        image?:string | null | Blob
+    },
+    token: boolean,
+}
 
 
-export class MyPage extends React.Component<any, any> {
+export class MyPage extends React.Component<any, State> {
     constructor(props: any) {
         super(props);
         this.state = {

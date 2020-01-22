@@ -1,0 +1,28 @@
+.userListItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100px;
+  margin-bottom: 10px;
+  border: black solid 1px;
+  background: antiquewhite;
+  cursor: pointer;
+  align-items: center;
+
+
+  .avatar {
+    margin-left: 20px;
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+  }
+
+  span {
+    margin-right: 20px;
+    font-family: Roboto,Arial ;
+    font-size: 3vh;
+  }
+}
+

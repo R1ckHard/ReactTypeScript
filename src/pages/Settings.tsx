@@ -7,17 +7,17 @@ import {connect} from 'react-redux'
 import {setAuthUser} from './../store/auth/actions';
 
 
-// interface State {
-//     userData: {
-//         login: string,
-//         name: string,
-//         surname: string,
-//         image:string
-//     },
-//     token: boolean,
-// }
+interface State {
+    userData: {
+        login: string,
+        name: string,
+        surname: string,
+        image?: string | null | Blob
+    },
+    token: boolean,
+}
 
-class Settings extends React.Component<any, any> {
+class Settings extends React.Component<any, State> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -34,23 +34,24 @@ class Settings extends React.Component<any, any> {
     handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log(this.state.userData);
+        let changeUserData = await userService.updateUser(
+            this.state.userData.login,
+            this.state.userData.name,
+            this.state.userData.surname
+        );
+        console.log('sasas', changeUserData);
+        this.props.setAuthUser(changeUserData);
+
         if (this.state.userData.image) {
+            console.log(this.state.userData.image);
             const data = new FormData();
             data.append("image", this.state.userData.image);
-            console.log(data);
             let updateImage = await userService.updateImage(data);
             this.props.setAuthUser(updateImage);
+            console.log(updateImage);
         }
-        let changeUserData = await userService.updateUser(this.state.userData.login,
-            this.state.userData.name,
-            this.state.userData.surname);
-        this.setState({
-            login: changeUserData.login,
-            name: changeUserData.name,
-            surname: changeUserData.surname,
-            image: changeUserData.image
-        })
-
+        console.log(changeUserData);
+        
     };
 
     deleteUser = async () => {
@@ -90,7 +91,6 @@ class Settings extends React.Component<any, any> {
                     login: data.login,
                     name: data.name,
                     surname: data.surname,
-                    image: data.surname
                 },
                 token: true,
 

@@ -72,7 +72,6 @@ export class UserTable extends React.Component<any, any> {
                 <TableCell align="right">{user.login}</TableCell>
                 <TableCell align="right">{user._id}</TableCell>
                 <TableCell align="right">{user.password}</TableCell>
-
             </TableRow>
         )
 

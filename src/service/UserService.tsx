@@ -1,7 +1,5 @@
 import axios from "axios";
 
-require('dotenv').config();
-console.log(process.env.BASE_API_URL);
 
 // const accessToken: any = localStorage.getItem("accessToken");
 const userService = {
@@ -15,7 +13,18 @@ const userService = {
         return userProfile.data;
 
     },
-    signUp: async (login: string, password: string, name: string, surname: string) => {
+    getAllUsers:async () =>{
+        let usersList = await axios
+            .get("http://localhost:8000/", {
+                
+            })
+        return usersList
+
+    },
+    signUp: async (login: string, 
+                   password: string,
+                   name: string,
+                   surname: string) => {
         let userRegistr = await axios
             .post("http://localhost:8000/registration", {
                     login: login,
@@ -33,7 +42,6 @@ const userService = {
     },
 
     updateUser: async (login: string,
-                       // password: string,
                        name: string,
                        surname: string) => {
         let updateUser = await axios
@@ -49,6 +57,7 @@ const userService = {
                         Authorization: await localStorage.getItem("accessToken"),
                     }
                 })
+        console.log('updatedUser',updateUser);
         return updateUser.data;
     },
 
@@ -69,7 +78,8 @@ const userService = {
                         Authorization: localStorage.getItem("accessToken"),
                     }
                 })
-        return userImage
+        console.log('image', userImage);
+        return userImage.data
     },
 
     signIn: async (login: string, password: string) => {

@@ -6,10 +6,10 @@ import {setAuthUser} from '../../store/auth/actions';
 import {connect} from 'react-redux'
 import {store} from '../../index';
 
-// interface State {
-//     login:any,
-//     password:any
-// }
+interface State {
+    login:any,
+    password:any
+}
 class SignInForm extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
@@ -27,7 +27,6 @@ class SignInForm extends React.Component<any, any> {
             }
         })
         console.log(store.getState().auth.userProfile)
-
     }
 
     inputHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,8 +54,7 @@ class SignInForm extends React.Component<any, any> {
         }
         console.log(this.props);
     };
-
-
+    
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         return (
             <div className="container">
@@ -83,7 +81,6 @@ class SignInForm extends React.Component<any, any> {
                         autoComplete="current-password"
                         variant="outlined"
                         placeholder="Password"
-
                     />
                     <Button className='submitButton' type="submit" variant="contained" color="primary">
                         Submit

@@ -45,20 +45,8 @@ class Navbar extends React.Component<any, State> {
         }
     }
 
-    componentDidMount = () => {
-        // store.subscribe(() => {
-        //     if (this.props.userProfile !== store.getState().auth.userProfile) {
-        //         console.log(store.getState().auth.userProfile);
-        //         console.log(this.props);
-        //
-        //     }
-        // })
-    }
-
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-
         return (
-
             <>
                 {this.props.token ? (<div className="navbar">
                             <AppBar position="static">
@@ -91,11 +79,7 @@ class Navbar extends React.Component<any, State> {
                                         </Menu>
                                     </Avatar>
                                 </div>
-
-
                             </AppBar>
-
-
                         </div>
                     ) :
                     (<div className="navbar">
