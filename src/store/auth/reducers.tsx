@@ -1,20 +1,25 @@
 import {
-    AUTH_CHANGE_USER,
+    GET_ALL_USER_FINISH,
+    SET_AUTH_USER_PROFILE_FINISH
 } from './actions'
 
 const defaultState = {
-    userProfile:{
-        login:'',
-        name:'',
-        surname:'',
-        image:''
+    userProfile: {
+        login: '',
+        name: '',
+        surname: '',
+        image: ''
     }
 }
 
 export const authReducer = (state: any = defaultState, action: any) => {
-    console.log(state);
     switch (action.type) {
-        case AUTH_CHANGE_USER:
+        case GET_ALL_USER_FINISH:
+            return {
+                ...state,
+                allUsers: action.payload
+            }
+        case SET_AUTH_USER_PROFILE_FINISH:
             return {
                 ...state,
                 userProfile: action.payload

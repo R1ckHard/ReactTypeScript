@@ -4,7 +4,7 @@ import userService from "../service/UserService";
 import Navbar from "../components/Navbar/Navbar";
 import {CircularProgress} from "@material-ui/core";
 import {connect} from 'react-redux'
-import {setAuthUser} from './../store/auth/actions';
+import {setPageUser} from './../store/auth/actions';
 
 
 interface State {
@@ -40,14 +40,14 @@ class Settings extends React.Component<any, State> {
             this.state.userData.surname
         );
         console.log('sasas', changeUserData);
-        this.props.setAuthUser(changeUserData);
+        this.props.setPageUser(changeUserData);
 
         if (this.state.userData.image) {
             console.log(this.state.userData.image);
             const data = new FormData();
             data.append("image", this.state.userData.image);
             let updateImage = await userService.updateImage(data);
-            this.props.setAuthUser(updateImage);
+            this.props.setPageUser(updateImage);
             console.log(updateImage);
         }
         console.log(changeUserData);
@@ -137,6 +137,6 @@ const mapStateToProps = (state: any) => {
     };
 }
 const mapDispatchToProps = {
-    setAuthUser,
+    setPageUser,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Settings)

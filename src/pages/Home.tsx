@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import userService from "../service/UserService";
-import {setAuthUser} from "../store/auth/actions";
+import {getAllUsersStart} from "../store/auth/actions";
 import {connect} from "react-redux";
 import { UserListItem } from "../components/UserListItem/UserListItem";
 
@@ -21,24 +21,27 @@ class Home extends React.Component <any, State> {
 
 
     componentDidMount = async () => {
-        const data = await userService.getMyPage();
+        this.props.setAuthUserOne()
         const userList = await userService.getAllUsers();
         this.setState({
-            userList: userList.data
+            userList: userList,
         })
-        if (data) {
-            this.setState({
-                token: true,
+        if(localStorage.getItem('accessToken')){
+            const data = await userService.getMyPage();
 
-            })
-        } else {
-            this.setState({
-                token: false,
+            if (data) {
+                this.setState({
+                    token: true,
 
-            })
+                })
+            } else {
+                this.setState({
+                    token: false,
+
+                })
+            }
+            console.log(this.state.userList);
         }
-        console.log(this.state.userList);
-
 
     };
 
@@ -50,11 +53,9 @@ class Home extends React.Component <any, State> {
                 <div className='container'>
                     <UserListItem userList={this.state.userList}/>
                 </div>
-
             </>
         )
     }
-
 }
 
 const mapStateToProps = (state: any) => {
@@ -62,9 +63,10 @@ const mapStateToProps = (state: any) => {
         userProfile: state.auth.userProfile
     };
 }
-const mapDispatchToProps = {
-    setAuthUser,
-
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        setAuthUserOne: () => dispatch(getAllUsersStart())
+    }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
 

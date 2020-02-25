@@ -2,7 +2,7 @@ import React, {FormEvent} from "react";
 import {TextField, Button, Typography} from "@material-ui/core/";
 import "./SignInForm.scss";
 import userService from "../../service/UserService";
-import {setAuthUser} from '../../store/auth/actions';
+import { setPageUser} from '../../store/auth/actions';
 import {connect} from 'react-redux'
 import {store} from '../../index';
 
@@ -38,12 +38,13 @@ class SignInForm extends React.Component<any, any> {
     handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log(this.state);
+        // dispatch()
         try {
             let accessToken = await userService.signIn(this.state.login, this.state.password);
             if (accessToken) {
                 await localStorage.setItem("accessToken", accessToken);
-                let user = await userService.getMyPage();
-                this.props.setAuthUser(user);
+                // let user = await userService.getMyPage();
+                this.props.setUserProfile();
                 this.props.history.push('/myPage');
             }
         } catch (e) {
@@ -96,9 +97,10 @@ const mapStateToProps = (state: any) => {
         userProfile: state.auth.userProfile
     };
 }
-const mapDispatchToProps = {
-    setAuthUser,
-
+const mapDispatchToProps  = (dispatch: any) => {
+    return {
+        setUserProfile: () => dispatch(setPageUser())
+    }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SignInForm)
 

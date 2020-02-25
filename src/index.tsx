@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore} from 'redux'
+import {createStore,applyMiddleware} from 'redux'
 import rootReducer from './store/reducers'
 import {Provider} from 'react-redux'
+import logger from 'redux-logger'
+// import thunk from "redux-thunk";
+import createSagaMiddleware from 'redux-saga'
+import {watchLoadData} from "./store/saga";
 
-export const store = createStore(rootReducer)
+const sagaMiddleware = createSagaMiddleware()
+export const store = createStore(rootReducer,applyMiddleware(logger,sagaMiddleware));
+sagaMiddleware.run(watchLoadData);
 
 ReactDOM.render(
     <Provider store={store}>

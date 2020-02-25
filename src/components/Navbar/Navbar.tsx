@@ -1,7 +1,7 @@
 import React from "react"
 import './Navbar.scss';
 import {MenuItem, Menu, Avatar, Button, Typography, Toolbar, AppBar} from '@material-ui/core/';
-import {setAuthUser} from '../../store/auth/actions';
+import {setPageUser} from '../../store/auth/actions';
 import {connect} from 'react-redux'
 
 interface State {
@@ -121,7 +121,7 @@ const mapStateToProps = (state: any) => {
     };
 }
 const mapDispatchToProps = {
-    setAuthUser,
+    setPageUser,
 
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

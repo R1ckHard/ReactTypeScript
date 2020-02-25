@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import {MyPage} from "./pages/MyPage";
 import {Registration} from "./pages/Registration"
 import {connect} from 'react-redux'
-import {setAuthUser} from './store/auth/actions';
+import {setPageUser} from './store/auth/actions';
 import userService from "./service/UserService";
 import Settings from './pages/Settings';
 import PrivateRoute from "./PrivateRouter";
@@ -14,9 +14,12 @@ class App extends React.Component<any, any> {
 
 
     componentDidMount = async () => {
-        const data = await userService.getMyPage();
-        if(data){
-            this.props.setAuthUser(data);
+        if(localStorage.getItem('accessToken')){
+            const data = await userService.getMyPage();
+            if(data){
+                this.props.setPageUser(data);
+            }
+
         }
 
     }
@@ -40,7 +43,7 @@ class App extends React.Component<any, any> {
 
 
 const mapDispatchToProps = {
-    setAuthUser,
+    setPageUser,
 
 }
 export default connect(null,mapDispatchToProps)(App)

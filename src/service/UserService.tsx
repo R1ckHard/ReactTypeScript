@@ -18,7 +18,7 @@ const userService = {
             .get("http://localhost:8000/", {
                 
             })
-        return usersList
+        return usersList.data
 
     },
     signUp: async (login: string, 
